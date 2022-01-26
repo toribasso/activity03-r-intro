@@ -45,14 +45,13 @@ beginning and end of the character.
 Make one long vector containing all the symbols.
 
 ``` r
-my_symbols <- cbind(lower_case, upper_case)
+my_symbols <- cbind(punctuation)
 ```
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**: I took out the punctuation row to make them all the same
-length.
+**Response**: I took out characters to just leave the punctuation.
 
 Turn the `my_symbols` vector into a data frame, with the variable name
 “Symbol”.
@@ -60,10 +59,10 @@ Turn the `my_symbols` vector into a data frame, with the variable name
 library(dplyr)
 
 ``` r
-my_symbols <- tibble(my_symbols)
+my_symbols <- data_frame(my_symbols)
 ```
 
-    ## Error in tibble(my_symbols): could not find function "tibble"
+    ## Error in data_frame(my_symbols): could not find function "data_frame"
 
 ``` r
 Symbol = names(my_symbols)
@@ -84,23 +83,22 @@ len <- length(my_symbols)
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**: There was one variable, so the length is one.
 
 5.  Create a new variable in your dataframe that assigns a number to
     each symbol.
 
 ``` r
-my_symbols%Num <- 1:len
+my_symbols$Num <- 1:len
 ```
 
-    ## Error: <text>:1:11: unexpected input
-    ## 1: my_symbols%Num <- 1:len
-    ##               ^
+    ## Warning in my_symbols$Num <- 1:len: Coercing LHS to a list
 
 Comment on what you noticed about the errors and how you used this
 information to correct the issues.
 
-**Response**:
+**Response**: There was a percent sign instead of a pound sign in the
+code.
 
 <img src="README-img/noun_pause.png" alt="pause" width = "20"/>
 <b>Planned Pause Point</b>: If you feel that you have a good
@@ -180,7 +178,7 @@ the final message, by running the following code:
 stringr::str_c(my_symbols$Symbol[top_secret], collapse = "")
 ```
 
-    ## Error in my_symbols$Symbol: $ operator is invalid for atomic vectors
+    ## [1] ""
 
 Google the first line of this message, if you do not recognize it, to
 see what it is.
